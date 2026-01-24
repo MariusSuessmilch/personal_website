@@ -158,10 +158,28 @@ const translations: Record<Language, Translations> = {
       title: "Gedanken & Essays",
       articles: [
         {
+          title: "Data Mesh: Der verborgene Motor der KI",
+          excerpt:
+            "Warum Ihre KI-Agenten scheitern: Sie versuchen, aus einem Sumpf zu trinken. Das Modell ist nicht der Engpass, die Datenarchitektur ist es.",
+          date: "2026-01-10",
+          readTime: "15 Min. Lesezeit",
+          tags: ["Datenarchitektur", "KI-Agenten"],
+          link: "/writing/data-mesh-the-hidden-engine",
+        },
+        {
+          title: "Prompt Engineering, das wirklich funktioniert",
+          excerpt:
+            "Hören Sie auf, dem Modell zu sagen, es soll 'wie Steve Jobs handeln.' Die technische Realität zuverlässiger Prompts.",
+          date: "2025-12-05",
+          readTime: "8 Min. Lesezeit",
+          tags: ["KI-Engineering", "Prompts"],
+          link: "/writing/prompt-engineering-that-actually-works",
+        },
+        {
           title: "Die Zukunft von KI-Agenten in Produktionssystemen",
           excerpt:
             "Architekturmuster und Herausforderungen beim Deployment autonomer KI-Agenten im großen Maßstab.",
-          date: "2024-12-15",
+          date: "2025-08-15",
           readTime: "12 Min. Lesezeit",
           tags: ["KI-Agenten", "Architektur"],
           link: "/writing/future-of-ai-agents",
@@ -170,17 +188,10 @@ const translations: Record<Language, Translations> = {
           title: "Warum RAG-Systeme scheitern (und wie man sie repariert)",
           excerpt:
             "Häufige Fallstricke bei Retrieval-Augmented Generation und praktische Strategien für robuste Systeme.",
-          date: "2024-11-28",
-          readTime: "12 Min. Lesezeit",
+          date: "2025-06-12",
+          readTime: "10 Min. Lesezeit",
           tags: ["RAG", "LLMs"],
-        },
-        {
-          title: "Engineering-Teams aufbauen, die liefern",
-          excerpt:
-            "Erkenntnisse aus der Skalierung von Teams von 3 auf 30 Engineers bei gleichbleibender Velocity und Kultur.",
-          date: "2024-10-10",
-          readTime: "6 Min. Lesezeit",
-          tags: ["Leadership", "Engineering"],
+          link: "/writing/why-rag-systems-fail",
         },
       ],
     },
@@ -279,10 +290,28 @@ const translations: Record<Language, Translations> = {
       title: "Thoughts & Essays",
       articles: [
         {
+          title: "Data Mesh: The Hidden Engine of AI",
+          excerpt:
+            "Why your AI Agents are failing: They are trying to drink from a swamp. The model is not the bottleneck, the data architecture is.",
+          date: "2026-01-10",
+          readTime: "15 min read",
+          tags: ["Data Architecture", "AI Agents"],
+          link: "/writing/data-mesh-the-hidden-engine",
+        },
+        {
+          title: "Prompt Engineering That Actually Works",
+          excerpt:
+            "Stop telling the model to 'Act as Steve Jobs.' The engineering reality of reliable prompting.",
+          date: "2025-12-05",
+          readTime: "8 min read",
+          tags: ["AI Engineering", "Prompts"],
+          link: "/writing/prompt-engineering-that-actually-works",
+        },
+        {
           title: "The Future of AI Agents in Production Systems",
           excerpt:
             "Exploring the architectural patterns and challenges of deploying autonomous AI agents at scale.",
-          date: "2024-12-15",
+          date: "2025-08-15",
           readTime: "12 min read",
           tags: ["AI Agents", "Architecture"],
           link: "/writing/future-of-ai-agents",
@@ -291,17 +320,10 @@ const translations: Record<Language, Translations> = {
           title: "Why RAG Systems Fail (And How to Fix Them)",
           excerpt:
             "Common pitfalls in retrieval-augmented generation and practical strategies for building robust systems.",
-          date: "2024-11-28",
-          readTime: "12 min read",
+          date: "2025-06-12",
+          readTime: "10 min read",
           tags: ["RAG", "LLMs"],
-        },
-        {
-          title: "Building Engineering Teams That Ship",
-          excerpt:
-            "Lessons from scaling teams from 3 to 30 engineers while maintaining velocity and culture.",
-          date: "2024-10-10",
-          readTime: "6 min read",
-          tags: ["Leadership", "Engineering"],
+          link: "/writing/why-rag-systems-fail",
         },
       ],
     },

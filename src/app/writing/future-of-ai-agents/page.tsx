@@ -57,7 +57,7 @@ export default function FutureOfAIAgentsPage() {
           <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-500">
             <span className="flex items-center gap-1.5">
               <Calendar className="h-4 w-4" />
-              Dec 15, 2024
+              Aug 15, 2025
             </span>
             <span className="flex items-center gap-1.5">
               <Clock className="h-4 w-4" />
@@ -84,7 +84,7 @@ export default function FutureOfAIAgentsPage() {
             We are currently peak-hype cycle for Generative AI. Every SaaS platform has bolted on a &quot;copilot,&quot; and nearly every developer has spun up a RAG wrapper. But if you look closely at production systems today, 95% of them are still just sophisticated Q&amp;A machines. They are passive. They wait for input, process it, and generate text.
           </p>
           <p className="mt-4 italic leading-relaxed text-zinc-300">
-            The next phase of AI isn&apos;t just about better models; it&apos;s about a fundamental shift in architecture. It&apos;s the move from <strong className="text-zinc-50">passive chatbots</strong> to <strong className="text-zinc-50">autonomous agents</strong>—systems that don&apos;t just tell you <em>how</em> to do something, but actually go out and <em>do it</em>.
+            The next phase of AI isn&apos;t just about better models; it&apos;s about a fundamental shift in architecture. It&apos;s the move from <strong className="text-zinc-50">passive chatbots</strong> to <strong className="text-zinc-50">autonomous agents</strong>:systems that don&apos;t just tell you <em>how</em> to do something, but actually go out and <em>do it</em>.
           </p>
         </motion.div>
 
@@ -110,7 +110,7 @@ export default function FutureOfAIAgentsPage() {
               </li>
               <li className="flex gap-2">
                 <span className="text-indigo-400">•</span>
-                <span><strong className="text-zinc-50">An Agent</strong> pursues a goal. Its primary output is <em>action</em>—executing code, calling an API, querying a database—intended to change the state of a system.</span>
+                <span><strong className="text-zinc-50">An Agent</strong> pursues a goal. Its primary output is <em>action</em>:executing code, calling an API, querying a database:intended to change the state of a system.</span>
               </li>
             </ul>
             <p className="mb-4 leading-relaxed text-zinc-300">
@@ -134,7 +134,7 @@ export default function FutureOfAIAgentsPage() {
               The Fragility of Reasoning Loops
             </h3>
             <p className="mb-4 leading-relaxed text-zinc-300">
-              Traditional software is deterministic: Input A always leads to Output B. Agents are probabilistic. You can give an agent the exact same goal five times, and it might take five different paths to get there—or fail completely on the fifth try because it &quot;hallucinated&quot; a nonexistent API parameter.
+              Traditional software is deterministic: Input A always leads to Output B. Agents are probabilistic. You can give an agent the exact same goal five times, and it might take five different paths to get there:or fail completely on the fifth try because it &quot;hallucinated&quot; a nonexistent API parameter.
             </p>
             <p className="mb-6 rounded-lg border border-zinc-800 bg-zinc-900/50 p-4 text-zinc-300">
               <strong className="text-indigo-400">The Engineering Challenge:</strong> We are moving from writing &quot;logic&quot; to writing &quot;guardrails.&quot; We aren&apos;t coding the path; we are coding the boundaries of the path.
@@ -147,7 +147,7 @@ export default function FutureOfAIAgentsPage() {
               In a standard web app, an API call takes milliseconds. In an agentic system, a single user request might trigger a reasoning loop that requires ten separate LLM calls back-to-back before a final action is taken.
             </p>
             <p className="mb-6 leading-relaxed text-zinc-300">
-              If an agent gets stuck in a loop—repeatedly trying the wrong tool, failing, and trying again—it isn&apos;t just frustrating the user; it is actively burning cash.
+              If an agent gets stuck in a loop,repeatedly trying the wrong tool, failing, and trying again, it isn&apos;t just frustrating the user. It is actively burning cash.
             </p>
 
             <h3 className="mb-3 font-mono text-xl font-semibold text-zinc-100">
@@ -317,7 +317,7 @@ export default function FutureOfAIAgentsPage() {
                   Level 3: The Agent
                 </h4>
                 <p className="text-zinc-300">
-                  If the workflow requires <strong className="text-zinc-50">investigation</strong>, <strong className="text-zinc-50">iteration</strong>, or <strong className="text-zinc-50">state management</strong>, this requires <InlineCode>LangGraph</InlineCode>. But ensure you have <InlineCode>LangSmith</InlineCode> attached for observability—you need to see the &quot;thought trace&quot; to debug why the agent did what it did.
+                  If the workflow requires <strong className="text-zinc-50">investigation</strong>, <strong className="text-zinc-50">iteration</strong>, or <strong className="text-zinc-50">state management</strong>, this requires <InlineCode>LangGraph</InlineCode>. But ensure you have <InlineCode>LangSmith</InlineCode> attached for observability:you need to see the &quot;thought trace&quot; to debug why the agent did what it did.
                 </p>
               </div>
             </div>

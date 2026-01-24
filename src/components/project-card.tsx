@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
-import { Badge } from "@/components/ui/badge"
 import { ExternalLink } from "lucide-react"
 
 interface ProjectCardProps {
@@ -65,9 +64,12 @@ export function ProjectCard({
 
           <div className="flex flex-wrap gap-2">
             {tags.map((tag) => (
-              <Badge key={tag} variant="outline" className="text-xs">
+              <span
+                key={tag}
+                className="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 font-mono text-xs text-zinc-400 transition-all duration-200 hover:border-indigo-400/50 hover:bg-indigo-500/10 hover:text-indigo-300"
+              >
                 {tag}
-              </Badge>
+              </span>
             ))}
           </div>
         </div>

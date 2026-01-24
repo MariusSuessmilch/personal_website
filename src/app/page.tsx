@@ -289,7 +289,7 @@ function WritingSection({ id }: { id?: string }) {
                       {article.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-full border border-zinc-700 bg-zinc-100/10 px-2 py-0.5 text-zinc-50"
+                          className="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 font-mono text-xs text-zinc-400 transition-all duration-200 hover:border-fuchsia-400/50 hover:bg-fuchsia-500/10 hover:text-fuchsia-300"
                         >
                           {tag}
                         </span>
