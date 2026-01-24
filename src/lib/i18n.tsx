@@ -62,6 +62,7 @@ interface Translations {
       date: string
       readTime: string
       tags: string[]
+      link?: string
     }[]
   }
   philosophy: {
@@ -78,11 +79,11 @@ interface Translations {
 const translations: Record<Language, Translations> = {
   de: {
     hero: {
-      subtitle: "KI-Entwickler & Manager",
+      subtitle: "Senior KI-Engineer & Technical Lead",
       headline1: "Architektur für",
       headline2: "Intelligenz.",
       description:
-        "Ich gestalte die Zukunft durch KI-Systeme, Produktstrategie und Engineering Excellence. Komplexe Herausforderungen werden zu eleganten, skalierbaren Lösungen.",
+        "Spezialisiert auf den Weg von LLMs vom Prototyp zur Produktion. Ich überbrücke die Lücke zwischen Forschung und skalierbarem Product Engineering.",
       cta: "Kontakt aufnehmen",
       viewWork: "Projekte ansehen",
       scroll: "Scrollen",
@@ -161,8 +162,9 @@ const translations: Record<Language, Translations> = {
           excerpt:
             "Architekturmuster und Herausforderungen beim Deployment autonomer KI-Agenten im großen Maßstab.",
           date: "2024-12-15",
-          readTime: "8 Min. Lesezeit",
+          readTime: "12 Min. Lesezeit",
           tags: ["KI-Agenten", "Architektur"],
+          link: "/writing/future-of-ai-agents",
         },
         {
           title: "Warum RAG-Systeme scheitern (und wie man sie repariert)",
@@ -183,8 +185,8 @@ const translations: Record<Language, Translations> = {
       ],
     },
     philosophy: {
-      label: "Philosophie",
-      title: "Wie ich denke",
+      label: "Prinzipien",
+      title: "Engineering-Grundsätze",
       paragraphs: [
         "Ich glaube, die besten KI-Systeme sind unsichtbar. Sie verstärken menschliche Fähigkeiten, ohne Aufmerksamkeit zu fordern. Das Ziel ist nicht, beeindruckende Technologie zu bauen – sondern echte Probleme elegant zu lösen.",
         "Mein Ansatz kombiniert tiefe technische Expertise mit Produktintuition. Jede Zeile Code sollte einem Nutzerbedürfnis dienen. Jedes System sollte vom nächsten Engineer wartbar sein.",
@@ -198,11 +200,11 @@ const translations: Record<Language, Translations> = {
   },
   en: {
     hero: {
-      subtitle: "AI Developer & Manager",
+      subtitle: "Senior AI Engineer & Technical Lead",
       headline1: "Architecting",
       headline2: "Intelligence.",
       description:
-        "Building the future through AI systems, product strategy, and engineering excellence. Transforming complex challenges into elegant, scalable solutions.",
+        "Specializing in moving LLMs from prototype to production. I bridge the gap between research science and scalable product engineering.",
       cta: "Get in Touch",
       viewWork: "View Work",
       scroll: "Scroll",
@@ -281,8 +283,9 @@ const translations: Record<Language, Translations> = {
           excerpt:
             "Exploring the architectural patterns and challenges of deploying autonomous AI agents at scale.",
           date: "2024-12-15",
-          readTime: "8 min read",
+          readTime: "12 min read",
           tags: ["AI Agents", "Architecture"],
+          link: "/writing/future-of-ai-agents",
         },
         {
           title: "Why RAG Systems Fail (And How to Fix Them)",
@@ -303,8 +306,8 @@ const translations: Record<Language, Translations> = {
       ],
     },
     philosophy: {
-      label: "Philosophy",
-      title: "How I Think",
+      label: "Principles",
+      title: "Engineering Principles",
       paragraphs: [
         "I believe the best AI systems are invisible. They amplify human capability without demanding attention. The goal isn't to build impressive technology—it's to solve real problems elegantly.",
         "My approach combines deep technical expertise with product intuition. Every line of code should serve a user need. Every system should be maintainable by the next engineer.",
@@ -327,7 +330,7 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>("de")
+  const [language, setLanguage] = useState<Language>("en")
 
   const value = {
     language,
