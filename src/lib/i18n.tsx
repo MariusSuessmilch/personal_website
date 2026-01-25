@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useState, useCallback, type ReactNode } from "react"
+import { createContext, useContext, useState, useEffect, type ReactNode } from "react"
 
 type Language = "de" | "en"
 
@@ -193,6 +193,15 @@ const translations: Record<Language, Translations> = {
           tags: ["RAG", "LLMs"],
           link: "/writing/why-rag-systems-fail",
         },
+        {
+          title: "Algorithmische Grundlagen: Gradient Descent",
+          excerpt:
+            "Hinter ChatGPT, Midjourney und jedem modernen neuronalen Netzwerk steckt eine einfache, mächtige Idee: das \"Tal\" zu finden.",
+          date: "2025-04-15",
+          readTime: "12 Min. Lesezeit",
+          tags: ["KI-Grundlagen", "Algorithmen"],
+          link: "/writing/gradient-descent-explained",
+        },
       ],
     },
     philosophy: {
@@ -325,6 +334,15 @@ const translations: Record<Language, Translations> = {
           tags: ["RAG", "LLMs"],
           link: "/writing/why-rag-systems-fail",
         },
+        {
+          title: "Algorithmic Fundamentals: Gradient Descent",
+          excerpt:
+            "Behind ChatGPT, Midjourney, and every modern neural network lies one simple, powerful idea for finding the \"bottom of the valley.\"",
+          date: "2025-04-15",
+          readTime: "12 min read",
+          tags: ["AI Fundamentals", "Algorithms"],
+          link: "/writing/gradient-descent-explained",
+        },
       ],
     },
     philosophy: {
@@ -352,12 +370,37 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>("en")
+  const [language, setLanguageState] = useState<Language>("en")
+  const [isHydrated, setIsHydrated] = useState(false)
+
+  // Read from localStorage on mount
+  useEffect(() => {
+    const stored = localStorage.getItem("language") as Language | null
+    if (stored && (stored === "de" || stored === "en")) {
+      setLanguageState(stored)
+    }
+    setIsHydrated(true)
+  }, [])
+
+  // Persist to localStorage when language changes
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang)
+    localStorage.setItem("language", lang)
+  }
 
   const value = {
     language,
     setLanguage,
     t: translations[language],
+  }
+
+  // Prevent hydration mismatch by rendering with default until hydrated
+  if (!isHydrated) {
+    return (
+      <LanguageContext.Provider value={value}>
+        {children}
+      </LanguageContext.Provider>
+    )
   }
 
   return (

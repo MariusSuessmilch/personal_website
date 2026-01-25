@@ -10,6 +10,7 @@ import { ProjectCard } from "@/components/project-card"
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 import { LanguageProvider, LanguageSwitcher, useLanguage } from "@/lib/i18n"
+import { ARTICLES, getLocalizedArticle, formatArticleDate } from "@/lib/articles"
 import {
   Brain,
   Layers,
@@ -240,6 +241,8 @@ function ProjectsSection({ id }: { id?: string }) {
 // Writing Section
 function WritingSection({ id }: { id?: string }) {
   const { t, language } = useLanguage()
+  const featuredArticles = ARTICLES.slice(0, 3)
+  const viewAllText = language === "de" ? "Alle Artikel ansehen" : "View All Writing"
 
   return (
     <section id={id} className="relative scroll-mt-16 px-6 py-24">
@@ -259,50 +262,12 @@ function WritingSection({ id }: { id?: string }) {
         </motion.div>
 
         <div className="space-y-6">
-          {t.writing.articles.map((article, index) => {
-            const CardContent = (
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                <div className="flex-1">
-                  <h3 className="mb-2 font-mono text-xl font-semibold text-zinc-50 transition-colors group-hover:text-fuchsia-300">
-                    {article.title}
-                  </h3>
-                  <p className="mb-4 text-sm leading-relaxed text-zinc-400">
-                    {article.excerpt}
-                  </p>
-                  <div className="flex flex-wrap items-center gap-4 text-xs text-zinc-500">
-                    <span className="flex items-center gap-1">
-                      <Calendar className="h-3 w-3" />
-                      {new Date(article.date).toLocaleDateString(
-                        language === "de" ? "de-DE" : "en-US",
-                        {
-                          month: "short",
-                          day: "numeric",
-                          year: "numeric",
-                        }
-                      )}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="h-3 w-3" />
-                      {article.readTime}
-                    </span>
-                    <div className="flex gap-2">
-                      {article.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 font-mono text-xs text-zinc-400 transition-all duration-200 hover:border-fuchsia-400/50 hover:bg-fuchsia-500/10 hover:text-fuchsia-300"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <ArrowRight className="hidden h-5 w-5 text-zinc-600 transition-all group-hover:translate-x-1 group-hover:text-fuchsia-400 sm:block" />
-              </div>
-            )
+          {featuredArticles.map((article, index) => {
+            const localized = getLocalizedArticle(article, language)
+            const formattedDate = formatArticleDate(article.date, language)
 
-            return article.link ? (
-              <Link key={article.title} href={article.link}>
+            return (
+              <Link key={article.slug} href={article.slug}>
                 <motion.article
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -310,23 +275,59 @@ function WritingSection({ id }: { id?: string }) {
                   transition={{ delay: index * 0.1 }}
                   className="group cursor-pointer rounded-xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md transition-all duration-300 hover:border-fuchsia-500/30 hover:bg-zinc-900/70"
                 >
-                  {CardContent}
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                    <div className="flex-1">
+                      <h3 className="mb-2 font-mono text-xl font-semibold text-zinc-50 transition-colors group-hover:text-fuchsia-300">
+                        {localized.title}
+                      </h3>
+                      <p className="mb-4 text-sm leading-relaxed text-zinc-400">
+                        {localized.excerpt}
+                      </p>
+                      <div className="flex flex-wrap items-center gap-4 text-xs text-zinc-500">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="h-3 w-3" />
+                          {formattedDate}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Clock className="h-3 w-3" />
+                          {localized.readTime}
+                        </span>
+                        <div className="flex gap-2">
+                          {localized.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 font-mono text-xs text-zinc-400 transition-all duration-200 group-hover:border-fuchsia-400/50 group-hover:bg-fuchsia-500/10 group-hover:text-fuchsia-300"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                    <ArrowRight className="hidden h-5 w-5 flex-shrink-0 text-zinc-600 transition-all group-hover:translate-x-1 group-hover:text-fuchsia-400 sm:block" />
+                  </div>
                 </motion.article>
               </Link>
-            ) : (
-              <motion.article
-                key={article.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group rounded-xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md transition-all duration-300"
-              >
-                {CardContent}
-              </motion.article>
             )
           })}
         </div>
+
+        {/* View All Link */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="mt-8 text-center"
+        >
+          <Link
+            href="/writing"
+            className="inline-flex items-center gap-2 font-mono text-sm text-zinc-400 transition-colors hover:text-fuchsia-400"
+          >
+            {viewAllText}
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   )
