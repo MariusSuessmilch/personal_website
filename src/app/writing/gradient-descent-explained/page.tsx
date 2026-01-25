@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { ArrowLeft, Calendar, Clock, Tag } from "lucide-react"
 import { GrainOverlay } from "@/components/grain-overlay"
 import { SGDVisualizer } from "@/components/sgd-visualizer"
-import { LanguageProvider, LanguageSwitcher, useLanguage } from "@/lib/i18n"
+import { LanguageProvider, useLanguage } from "@/lib/i18n"
 
 function InlineCode({ children }: { children: React.ReactNode }) {
   return (
@@ -15,9 +15,38 @@ function InlineCode({ children }: { children: React.ReactNode }) {
   )
 }
 
+function ArticleLanguageToggle() {
+  const { language, setLanguage } = useLanguage()
+
+  return (
+    <div className="mb-8 flex items-center gap-1 rounded-lg border border-white/10 bg-zinc-900/50 p-1 backdrop-blur-md w-fit">
+      <button
+        onClick={() => setLanguage("en")}
+        className={`rounded-md px-4 py-2 font-mono text-sm transition-all ${
+          language === "en"
+            ? "bg-cyan-500/20 text-cyan-300"
+            : "text-zinc-500 hover:text-zinc-300"
+        }`}
+      >
+        English
+      </button>
+      <button
+        onClick={() => setLanguage("de")}
+        className={`rounded-md px-4 py-2 font-mono text-sm transition-all ${
+          language === "de"
+            ? "bg-cyan-500/20 text-cyan-300"
+            : "text-zinc-500 hover:text-zinc-300"
+        }`}
+      >
+        Deutsch
+      </button>
+    </div>
+  )
+}
+
 const content = {
   en: {
-    backToHome: "Back to home",
+    backToHome: "Back to articles",
     backToArticles: "Back to all articles",
     title: "Algorithmic Fundamentals:",
     titleGradient: "Gradient Descent",
@@ -73,7 +102,7 @@ const content = {
     conclusionP1Bold: "feel the slope, take a step down, and repeat billions of times",
   },
   de: {
-    backToHome: "Zurück zur Startseite",
+    backToHome: "Zurück zu Artikeln",
     backToArticles: "Zurück zu allen Artikeln",
     title: "Algorithmische Grundlagen:",
     titleGradient: "Gradient Descent",
@@ -137,7 +166,6 @@ function GradientDescentContent() {
   return (
     <main className="relative min-h-screen bg-zinc-950">
       <GrainOverlay />
-      <LanguageSwitcher />
 
       {/* Background gradient orb */}
       <div className="pointer-events-none fixed inset-0 flex items-start justify-center overflow-hidden">
@@ -152,12 +180,21 @@ function GradientDescentContent() {
           transition={{ duration: 0.5 }}
         >
           <Link
-            href="/#writing"
-            className="mb-12 inline-flex items-center gap-2 font-mono text-sm text-zinc-500 transition-colors hover:text-cyan-400"
+            href="/writing"
+            className="mb-8 inline-flex items-center gap-2 font-mono text-sm text-zinc-500 transition-colors hover:text-cyan-400"
           >
             <ArrowLeft className="h-4 w-4" />
             {t.backToHome}
           </Link>
+        </motion.div>
+
+        {/* Language Toggle */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.05 }}
+        >
+          <ArticleLanguageToggle />
         </motion.div>
 
         {/* Hero Header */}
@@ -367,6 +404,63 @@ function GradientDescentContent() {
               {t.conclusionP1} <strong className="text-lime-300">{t.conclusionP1Bold}</strong>.
             </p>
           </section>
+
+          {/* References */}
+          <section className="mt-12 border-t border-zinc-800 pt-8">
+            <h3 className="mb-4 font-mono text-xs font-semibold uppercase tracking-wider text-zinc-500">
+              {language === "de" ? "Quellen & Referenzen" : "Research & Sources"}
+            </h3>
+            <ul className="space-y-4">
+              <li>
+                <a
+                  href="https://www.deeplearningbook.org/contents/optimization.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded-lg border border-zinc-800 bg-zinc-900/30 p-4 transition-all hover:border-cyan-500/30 hover:bg-zinc-900/50"
+                >
+                  <div className="flex items-start gap-3">
+                    <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded bg-cyan-500/20 font-mono text-xs text-cyan-400">1</span>
+                    <div>
+                      <p className="font-mono text-sm text-zinc-300">Deep Learning Book: Optimization for Training Deep Models</p>
+                      <p className="mt-1 text-xs text-zinc-500">Goodfellow, Bengio, Courville (MIT Press)</p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://arxiv.org/abs/1609.04836"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded-lg border border-zinc-800 bg-zinc-900/30 p-4 transition-all hover:border-cyan-500/30 hover:bg-zinc-900/50"
+                >
+                  <div className="flex items-start gap-3">
+                    <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded bg-cyan-500/20 font-mono text-xs text-cyan-400">2</span>
+                    <div>
+                      <p className="font-mono text-sm text-zinc-300">An Overview of Gradient Descent Optimization Algorithms</p>
+                      <p className="mt-1 text-xs text-zinc-500">Sebastian Ruder (arXiv, 2016)</p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://cs231n.github.io/optimization-1/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded-lg border border-zinc-800 bg-zinc-900/30 p-4 transition-all hover:border-cyan-500/30 hover:bg-zinc-900/50"
+                >
+                  <div className="flex items-start gap-3">
+                    <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded bg-cyan-500/20 font-mono text-xs text-cyan-400">3</span>
+                    <div>
+                      <p className="font-mono text-sm text-zinc-300">CS231n: Optimization - Stochastic Gradient Descent</p>
+                      <p className="mt-1 text-xs text-zinc-500">Stanford University</p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </section>
         </motion.div>
 
         {/* Footer */}
@@ -377,7 +471,7 @@ function GradientDescentContent() {
           className="mt-16 border-t border-zinc-800 pt-8"
         >
           <Link
-            href="/#writing"
+            href="/writing"
             className="inline-flex items-center gap-2 font-mono text-sm text-zinc-500 transition-colors hover:text-cyan-400"
           >
             <ArrowLeft className="h-4 w-4" />

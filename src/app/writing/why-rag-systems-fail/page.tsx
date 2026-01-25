@@ -31,11 +31,11 @@ export default function WhyRAGSystemsFailPage() {
           transition={{ duration: 0.5 }}
         >
           <Link
-            href="/#writing"
+            href="/writing"
             className="mb-12 inline-flex items-center gap-2 font-mono text-sm text-zinc-500 transition-colors hover:text-emerald-400"
           >
             <ArrowLeft className="h-4 w-4" />
-            Back to home
+            Back to articles
           </Link>
         </motion.div>
 
@@ -256,6 +256,63 @@ export default function WhyRAGSystemsFailPage() {
               </p>
             </div>
           </section>
+
+          {/* References */}
+          <section className="mt-12 border-t border-zinc-800 pt-8">
+            <h3 className="mb-4 font-mono text-xs font-semibold uppercase tracking-wider text-zinc-500">
+              Research &amp; Sources
+            </h3>
+            <ul className="space-y-4">
+              <li>
+                <a
+                  href="https://arxiv.org/abs/2307.03172"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded-lg border border-zinc-800 bg-zinc-900/30 p-4 transition-all hover:border-emerald-500/30 hover:bg-zinc-900/50"
+                >
+                  <div className="flex items-start gap-3">
+                    <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded bg-emerald-500/20 font-mono text-xs text-emerald-400">1</span>
+                    <div>
+                      <p className="font-mono text-sm text-zinc-300">Lost in the Middle: How Language Models Use Long Contexts</p>
+                      <p className="mt-1 text-xs text-zinc-500">arXiv, 2023</p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://docs.ragas.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded-lg border border-zinc-800 bg-zinc-900/30 p-4 transition-all hover:border-emerald-500/30 hover:bg-zinc-900/50"
+                >
+                  <div className="flex items-start gap-3">
+                    <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded bg-emerald-500/20 font-mono text-xs text-emerald-400">2</span>
+                    <div>
+                      <p className="font-mono text-sm text-zinc-300">Ragas: Evaluation Framework for RAG Pipelines</p>
+                      <p className="mt-1 text-xs text-zinc-500">Ragas Documentation</p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://arxiv.org/abs/2312.10997"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded-lg border border-zinc-800 bg-zinc-900/30 p-4 transition-all hover:border-emerald-500/30 hover:bg-zinc-900/50"
+                >
+                  <div className="flex items-start gap-3">
+                    <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded bg-emerald-500/20 font-mono text-xs text-emerald-400">3</span>
+                    <div>
+                      <p className="font-mono text-sm text-zinc-300">Retrieval-Augmented Generation for Large Language Models: A Survey</p>
+                      <p className="mt-1 text-xs text-zinc-500">arXiv, 2023</p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </section>
         </motion.div>
 
         {/* Footer */}
@@ -266,7 +323,7 @@ export default function WhyRAGSystemsFailPage() {
           className="mt-16 border-t border-zinc-800 pt-8"
         >
           <Link
-            href="/#writing"
+            href="/writing"
             className="inline-flex items-center gap-2 font-mono text-sm text-zinc-500 transition-colors hover:text-emerald-400"
           >
             <ArrowLeft className="h-4 w-4" />
