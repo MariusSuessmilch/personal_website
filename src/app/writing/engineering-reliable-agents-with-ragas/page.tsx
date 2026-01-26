@@ -57,7 +57,7 @@ const content = {
 
     // Section 1: The "Works on My Machine" Trap
     section1Title: "The \"Works on My Machine\" Trap",
-    section1P1: "Let's be honest about how most RAG (Retrieval-Augmented Generation) systems are validated today. You build a pipeline in LangChain, you ask it three questions—\"What is our refund policy?\", \"Who is the CEO?\", \"Summarize Q3 revenue\"—and if the answers look reasonable, you ship it.",
+    section1P1: "Let's be honest about how most RAG (Retrieval-Augmented Generation) systems are validated today. You build a pipeline in LangChain, you ask it three questions: \"What is our refund policy?\", \"Who is the CEO?\", \"Summarize Q3 revenue\" and if the answers look reasonable, you ship it.",
     section1P2: "We call this the",
     section1P2Bold: "\"Vibe Check.\"",
     section1P3: "The problem is that \"Vibes\" don't scale. When you move from a prototype to a production agent handling thousands of edge cases, \"looking reasonable\" isn't enough. You need metrics. You need to know:",
@@ -163,7 +163,7 @@ const content = {
 
     // Section 1: The "Works on My Machine" Trap
     section1Title: "Die \"Läuft auf meinem Rechner\"-Falle",
-    section1P1: "Seien wir ehrlich, wie die meisten RAG-Systeme heute validiert werden. Sie bauen eine Pipeline in LangChain, stellen drei Fragen – \"Wie ist unsere Rückerstattungsrichtlinie?\", \"Wer ist der CEO?\", \"Fasse den Q3-Umsatz zusammen\" – und wenn die Antworten vernünftig aussehen, gehen Sie live.",
+    section1P1: "Seien wir ehrlich, wie die meisten RAG-Systeme heute validiert werden. Sie bauen eine Pipeline in LangChain, stellen drei Fragen: \"Wie ist unsere Rückerstattungsrichtlinie?\", \"Wer ist der CEO?\", \"Fasse den Q3-Umsatz zusammen\" und wenn die Antworten vernünftig aussehen, gehen Sie live.",
     section1P2: "Wir nennen das den",
     section1P2Bold: "\"Vibe Check\".",
     section1P3: "Das Problem ist: \"Vibes\" skalieren nicht. Wenn Sie von einem Prototypen zu einem Produktions-Agenten übergehen, der Tausende von Edge Cases bearbeitet, reicht \"sieht vernünftig aus\" nicht mehr. Sie brauchen Metriken. Sie müssen wissen:",
