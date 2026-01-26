@@ -148,8 +148,6 @@ const content = {
     ref1Author: "arXiv (2023)",
     ref2Title: "Ragas Documentation",
     ref2Author: "docs.ragas.io",
-    ref3Title: "Exploding Gradients / Ragas",
-    ref3Author: "GitHub",
   },
   de: {
     backToHome: "Zurück zu Artikeln",
@@ -254,8 +252,6 @@ const content = {
     ref1Author: "arXiv (2023)",
     ref2Title: "Ragas Documentation",
     ref2Author: "docs.ragas.io",
-    ref3Title: "Exploding Gradients / Ragas",
-    ref3Author: "GitHub",
   },
 }
 
@@ -523,22 +519,6 @@ function RagasContent() {
                     <div>
                       <p className="font-mono text-sm text-zinc-300">{t.ref2Title}</p>
                       <p className="mt-1 text-xs text-zinc-500">{t.ref2Author}</p>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/explodinggradients/ragas"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block rounded-lg border border-zinc-800 bg-zinc-900/30 p-4 transition-all hover:border-cyan-500/30 hover:bg-zinc-900/50"
-                >
-                  <div className="flex items-start gap-3">
-                    <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded bg-cyan-500/20 font-mono text-xs text-cyan-400">3</span>
-                    <div>
-                      <p className="font-mono text-sm text-zinc-300">{t.ref3Title}</p>
-                      <p className="mt-1 text-xs text-zinc-500">{t.ref3Author}</p>
                     </div>
                   </div>
                 </a>
