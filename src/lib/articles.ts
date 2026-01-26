@@ -21,6 +21,26 @@ export interface Article {
 
 export const ARTICLES: Article[] = [
   {
+    slug: "/writing/engineering-reliable-agents-with-ragas",
+    title: {
+      en: "Engineering Reliable Agents with Ragas",
+      de: "Entwicklung verlässlicher KI-Agenten mit Ragas",
+    },
+    excerpt: {
+      en: "Moving beyond the \"Vibe Check\" by instrumenting LangChain agents with the RAG Triad metrics.",
+      de: "Jenseits des \"Vibe Check\": LangChain-Agenten mit den RAG-Triad-Metriken instrumentieren.",
+    },
+    date: "2026-01-24",
+    readTime: {
+      en: "10 min read",
+      de: "10 Min. Lesezeit",
+    },
+    tags: {
+      en: ["Agents", "Testing", "Ragas", "LangChain"],
+      de: ["Agenten", "Testing", "Ragas", "LangChain"],
+    },
+  },
+  {
     slug: "/writing/data-mesh-the-hidden-engine",
     title: {
       en: "Data Mesh: The Hidden Engine of AI",

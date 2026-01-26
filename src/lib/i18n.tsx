@@ -129,27 +129,27 @@ const translations: Record<Language, Translations> = {
         {
           title: "KI macht Schule",
           description:
-            "Co-Founder einer Initiative, die KI-Bildung an deutsche Schulen bringt. Entwicklung von Workshops und Lehrmaterialien für Schüler und Lehrkräfte.",
-          tags: ["EdTech", "KI-Bildung", "Non-Profit"],
+            "Co-Founder einer Initiative, die KI-Bildung an deutsche Schulen bringt. Bundesweite Skalierung mit Partnern wie Google und PwC.",
+          tags: ["EdTech", "Strategie", "Non-Profit"],
           link: "https://ki-macht-schule.de/",
         },
         {
-          title: "Neural Search Engine",
+          title: "Biometric Privacy & Vision",
           description:
-            "Semantisches Suchsystem für 10M+ Dokumente mit unter 100ms Latenz. Vector Embeddings und Hybrid-Retrieval für 40% bessere Relevanz.",
-          tags: ["Python", "FAISS", "Transformers", "Redis"],
+            "Forschung zur Robustheit neuronaler Netze gegen Verdeckungen. Veröffentlichung vergleichender Studien zur \"Masked Face Recognition\"-Performance während der Pandemie.",
+          tags: ["PyTorch", "Computer Vision", "Forschung"],
         },
         {
-          title: "KI-Schreibassistent",
+          title: "Autonomous Edge Robotics",
           description:
-            "Leitung der Entwicklung eines Echtzeit-Schreibassistenten mit 50K+ Nutzern. Streaming Inference, Kontextmanagement und personalisierte Tonanpassung.",
-          tags: ["TypeScript", "GPT-4", "WebSockets", "React"],
+            "Entwicklung eines Reinforcement-Learning-Stacks für selbstfahrende Fahrzeuge auf NVIDIA Jetson Nano Hardware. Deployment in 6 europäischen Ländern.",
+          tags: ["Reinforcement Learning", "Edge AI", "IoT"],
         },
         {
-          title: "MLOps Plattform",
+          title: "Enterprise AI Architecture",
           description:
-            "Interne ML-Plattform, die Model-Deployment von Wochen auf Stunden reduziert. Automatisierte Training-, Evaluations- und A/B-Testing-Pipelines.",
-          tags: ["Kubernetes", "MLflow", "Airflow", "Terraform"],
+            "Design von Data-Governance-Frameworks und Predictive-Maintenance-Use-Cases für internationale Automobil- und Pharmakunden.",
+          tags: ["System Design", "Architektur", "Strategie"],
         },
       ],
     },
@@ -270,27 +270,27 @@ const translations: Record<Language, Translations> = {
         {
           title: "KI macht Schule",
           description:
-            "Co-Founder of an initiative bringing AI education to German schools. Developing workshops and teaching materials for students and teachers.",
-          tags: ["EdTech", "AI Education", "Non-Profit"],
+            "Co-Founder of an initiative bringing AI education to German schools. Scaled to nationwide adoption with partners like Google and PwC.",
+          tags: ["EdTech", "Strategy", "Non-Profit"],
           link: "https://ki-macht-schule.de/",
         },
         {
-          title: "Neural Search Engine",
+          title: "Biometric Privacy & Vision",
           description:
-            "Built a semantic search system processing 10M+ documents with sub-100ms latency. Leveraged vector embeddings and hybrid retrieval for 40% improvement in relevance.",
-          tags: ["Python", "FAISS", "Transformers", "Redis"],
+            "Researching neural network robustness against occlusions. Published comparative studies on \"Masked Face Recognition\" performance during the pandemic.",
+          tags: ["PyTorch", "Computer Vision", "Research"],
         },
         {
-          title: "AI Writing Assistant",
+          title: "Autonomous Edge Robotics",
           description:
-            "Led development of a real-time writing assistant used by 50K+ users. Implemented streaming inference, context management, and personalized tone adaptation.",
-          tags: ["TypeScript", "GPT-4", "WebSockets", "React"],
+            "Developed a Reinforcement Learning stack for self-driving vehicles on NVIDIA Jetson Nano hardware. Deployed across 6 European countries.",
+          tags: ["Reinforcement Learning", "Edge AI", "IoT"],
         },
         {
-          title: "MLOps Platform",
+          title: "Enterprise AI Architecture",
           description:
-            "Designed an internal ML platform reducing model deployment time from weeks to hours. Automated training, evaluation, and A/B testing pipelines.",
-          tags: ["Kubernetes", "MLflow", "Airflow", "Terraform"],
+            "Designing data governance frameworks and predictive maintenance use-cases for international automotive and pharma clients.",
+          tags: ["System Design", "Architecture", "Strategy"],
         },
       ],
     },
