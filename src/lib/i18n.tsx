@@ -206,11 +206,11 @@ const translations: Record<Language, Translations> = {
     },
     philosophy: {
       label: "Prinzipien",
-      title: "Engineering-Grundsätze",
+      title: "Engineering Prinzipien",
       paragraphs: [
-        "Ich glaube, die besten KI-Systeme sind unsichtbar. Sie verstärken menschliche Fähigkeiten, ohne Aufmerksamkeit zu fordern. Das Ziel ist nicht, beeindruckende Technologie zu bauen – sondern echte Probleme elegant zu lösen.",
-        "Mein Ansatz kombiniert tiefe technische Expertise mit Produktintuition. Jede Zeile Code sollte einem Nutzerbedürfnis dienen. Jedes System sollte vom nächsten Engineer wartbar sein.",
-        "Mich zieht die Grenze des Möglichen an – wo Forschung auf Produktion trifft, wo Komplexität Einfachheit verlangt, wo die schwierigsten Probleme den größten Wert schaffen.",
+        "Die besten KI-Systeme sind unsichtbar. Sie fordern keine Aufmerksamkeit, sondern funktionieren einfach.",
+        "Mein Fokus liegt auf der stabilen Infrastruktur, die das erst ermöglicht. Ich schätze einfache Architektur mehr als cleveren Code. Jedes System, das ich baue, muss von Menschen lesbar, von Teams wartbar und von Nutzern vertrauenswürdig sein.",
+        "Ich arbeite dort, wo Forschung auf Produktion trifft. Genau dort, wo Komplexität oft Projekte scheitern lässt und wo Einfachheit den größten Wert schafft.",
       ],
       cta: "Meine Texte lesen",
     },
@@ -349,9 +349,9 @@ const translations: Record<Language, Translations> = {
       label: "Principles",
       title: "Engineering Principles",
       paragraphs: [
-        "I believe the best AI systems are invisible. They amplify human capability without demanding attention. The goal isn't to build impressive technology—it's to solve real problems elegantly.",
-        "My approach combines deep technical expertise with product intuition. Every line of code should serve a user need. Every system should be maintainable by the next engineer.",
-        "I'm drawn to the edge of what's possible—where research meets production, where complexity demands simplicity, where the hardest problems create the most value.",
+        "The best AI systems are invisible. They do not demand attention; they just work.",
+        "My focus is building the boring, reliable infrastructure that makes this possible. I value simple architecture over clever code. Every system I build is designed to be read by humans, maintained by teams, and trusted by users.",
+        "I operate where research meets production. This is where complexity usually kills projects, and where simplicity creates the most value.",
       ],
       cta: "Read my writing",
     },
