@@ -72,7 +72,7 @@ const content = {
     section1ConclusionBold: "Data Mesh",
 
     // Section: What is Data Mesh
-    section2Title: "Pop Open the Hood: What is a Data Mesh?",
+    section2Title: "Under the Hood: What is a Data Mesh?",
     section2P1: "Don't be fooled by the buzzwords. At its core, Data Mesh is not a technology; it is a",
     section2P1Bold: "socio-technical shift",
     section2P1End: ". It flips the script from \"Centralized Ownership\" to",

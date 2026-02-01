@@ -68,7 +68,7 @@ const content = {
     section1P4End2: "engineering",
 
     // Section 2: The RAG Triad
-    section2Title: "Pop Open the Hood: The RAG Triad",
+    section2Title: "Under the Hood: The RAG Triad",
     section2P1: "Don't be fooled by the complexity of modern agent frameworks. At its core, a RAG system has two main failure points:",
     section2P1Bold1: "Retrieval",
     section2P1Mid: "(finding the data) and",
