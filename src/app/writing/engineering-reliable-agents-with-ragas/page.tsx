@@ -15,6 +15,25 @@ function InlineCode({ children }: { children: React.ReactNode }) {
   )
 }
 
+const sourceUrls: Record<string, string> = {
+  "1": "https://arxiv.org/abs/2309.15217",
+  "2": "https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/",
+}
+
+function CitationLink({ num }: { num: string }) {
+  return (
+    <a
+      href={sourceUrls[num]}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="ml-0.5 inline-flex h-4 w-4 items-center justify-center rounded bg-cyan-500/20 font-mono text-[10px] text-cyan-400 transition-colors hover:bg-cyan-500/40 hover:text-cyan-300 align-super"
+      title={`Source ${num}`}
+    >
+      {num}
+    </a>
+  )
+}
+
 function ArticleLanguageToggle() {
   const { language, setLanguage } = useLanguage()
 
@@ -50,33 +69,33 @@ const content = {
     backToArticles: "Back to all articles",
     title: "Beyond the \"Vibe Check\":",
     titleGradient: "Engineering Reliable Agents with Ragas",
-    subtitle: "We built the agent. It answers questions. But how do we know if it's actually good?",
+    subtitle: "Most RAG systems ship after passing three manual tests. Production requires systematic evaluation metrics that identify exactly where pipelines fail.",
     date: "Jan 24, 2026",
     readTime: "10 min read",
     tag: "AI Testing",
 
     // Section 1: The "Works on My Machine" Trap
     section1Title: "The \"Works on My Machine\" Trap",
-    section1P1: "Let's be honest about how most RAG (Retrieval-Augmented Generation) systems are validated today. You build a pipeline in LangChain, you ask it three questions: \"What is our refund policy?\", \"Who is the CEO?\", \"Summarize Q3 revenue\" and if the answers look reasonable, you ship it.",
-    section1P2: "We call this the",
-    section1P2Bold: "\"Vibe Check.\"",
-    section1P3: "The problem is that \"Vibes\" don't scale. When you move from a prototype to a production agent handling thousands of edge cases, \"looking reasonable\" isn't enough. You need metrics. You need to know:",
-    section1P3Em: "Did the model hallucinate that number? Did the retriever miss the crucial document? Or did the agent just misunderstand the user?",
+    section1P1: "Most RAG (Retrieval-Augmented Generation) systems follow the same validation pattern: build a pipeline in LangChain, ask three questions—\"What is our refund policy?\", \"Who is the CEO?\", \"Summarize Q3 revenue\"—and if the answers look reasonable, ship it.",
+    section1P2: "This approach has a name:",
+    section1P2Bold: "the \"Vibe Check.\"",
+    section1P3: "The problem is that vibes do not scale. Moving from prototype to production means handling thousands of edge cases where \"looking reasonable\" provides no diagnostic value. The questions that matter are specific:",
+    section1P3Em: "Did the model hallucinate that number? Did the retriever miss the crucial document? Did the agent misunderstand the user's intent?",
     section1P4: "This is where",
     section1P4Bold: "Ragas",
-    section1P4End: "comes in. It helps us move from \"guessing\" to",
+    section1P4End: "provides value. It enables the shift from guessing to",
     section1P4End2: "engineering",
 
     // Section 2: The RAG Triad
     section2Title: "Under the Hood: The RAG Triad",
-    section2P1: "Don't be fooled by the complexity of modern agent frameworks. At its core, a RAG system has two main failure points:",
+    section2P1: "Despite the complexity of modern agent frameworks, RAG systems have two primary failure points:",
     section2P1Bold1: "Retrieval",
-    section2P1Mid: "(finding the data) and",
+    section2P1Mid: "(finding the right data) and",
     section2P1Bold2: "Generation",
-    section2P1End: "(synthesizing the answer).",
-    section2P2: "Ragas doesn't just give you a \"pass/fail\" score. It breaks the problem down into what we call the",
+    section2P1End: "(synthesizing an accurate answer).",
+    section2P2: "Ragas moves beyond binary pass/fail scoring. It decomposes evaluation into what the authors call the",
     section2P2Bold: "RAG Triad",
-    section2P2End: ". Let's distill these metrics so you can see the mechanics of where your agent is breaking.",
+    section2P2End: "—three metrics that pinpoint exactly where a pipeline breaks.",
 
     // Faithfulness Callout
     faithfulnessTitle: "1. Faithfulness (The \"Hallucination\" Check)",
@@ -145,7 +164,7 @@ const content = {
     // References
     referencesTitle: "Research & Sources",
     ref1Title: "RAGAS: Automated Evaluation of Retrieval Augmented Generation",
-    ref1Author: "arXiv (2023)",
+    ref1Author: "Es, James, Espinosa-Anke & Schockaert (arXiv, 2023)",
     ref2Title: "Ragas Documentation",
     ref2Author: "docs.ragas.io",
   },
@@ -154,33 +173,33 @@ const content = {
     backToArticles: "Zurück zu allen Artikeln",
     title: "Jenseits des \"Vibe Check\":",
     titleGradient: "Entwicklung verlässlicher KI-Agenten mit Ragas",
-    subtitle: "Wir haben den Agenten gebaut. Er beantwortet Fragen. Aber woher wissen wir, ob er tatsächlich gut ist?",
+    subtitle: "Die meisten RAG-Systeme gehen nach drei manuellen Tests in Produktion. Produktionsreife erfordert systematische Evaluationsmetriken, die genau identifizieren, wo Pipelines versagen.",
     date: "24. Jan 2026",
     readTime: "10 Min. Lesezeit",
     tag: "KI-Testing",
 
     // Section 1: The "Works on My Machine" Trap
     section1Title: "Die \"Läuft auf meinem Rechner\"-Falle",
-    section1P1: "Seien wir ehrlich, wie die meisten RAG-Systeme heute validiert werden. Sie bauen eine Pipeline in LangChain, stellen drei Fragen: \"Wie ist unsere Rückerstattungsrichtlinie?\", \"Wer ist der CEO?\", \"Fasse den Q3-Umsatz zusammen\" und wenn die Antworten vernünftig aussehen, gehen Sie live.",
-    section1P2: "Wir nennen das den",
-    section1P2Bold: "\"Vibe Check\".",
-    section1P3: "Das Problem ist: \"Vibes\" skalieren nicht. Wenn Sie von einem Prototypen zu einem Produktions-Agenten übergehen, der Tausende von Edge Cases bearbeitet, reicht \"sieht vernünftig aus\" nicht mehr. Sie brauchen Metriken. Sie müssen wissen:",
-    section1P3Em: "Hat das Modell diese Zahl halluziniert? Hat der Retriever das entscheidende Dokument übersehen? Oder hat der Agent den Nutzer einfach missverstanden?",
-    section1P4: "Hier kommt",
+    section1P1: "Die meisten RAG-Systeme (Retrieval-Augmented Generation) folgen dem gleichen Validierungsmuster: Pipeline in LangChain bauen, drei Fragen stellen—\"Wie ist unsere Rückerstattungsrichtlinie?\", \"Wer ist der CEO?\", \"Fasse den Q3-Umsatz zusammen\"—und wenn die Antworten vernünftig aussehen, live gehen.",
+    section1P2: "Dieser Ansatz hat einen Namen:",
+    section1P2Bold: "der \"Vibe Check\".",
+    section1P3: "Das Problem: Vibes skalieren nicht. Der Übergang vom Prototyp zur Produktion bedeutet, Tausende von Edge Cases zu bearbeiten, bei denen \"sieht vernünftig aus\" keinen diagnostischen Wert bietet. Die relevanten Fragen sind spezifisch:",
+    section1P3Em: "Hat das Modell diese Zahl halluziniert? Hat der Retriever das entscheidende Dokument übersehen? Hat der Agent die Absicht des Nutzers missverstanden?",
+    section1P4: "Hier bietet",
     section1P4Bold: "Ragas",
-    section1P4End: "ins Spiel. Es hilft uns, vom \"Raten\" zum",
+    section1P4End: "seinen Wert. Es ermöglicht den Wechsel vom Raten zum",
     section1P4End2: "Engineering",
 
     // Section 2: The RAG Triad
     section2Title: "Ein Blick unter die Haube: Das RAG-Triad",
-    section2P1: "Lassen Sie sich nicht von der Komplexität moderner Agent-Frameworks täuschen. Im Kern hat ein RAG-System zwei Hauptfehlerquellen:",
+    section2P1: "Trotz der Komplexität moderner Agent-Frameworks haben RAG-Systeme zwei primäre Fehlerquellen:",
     section2P1Bold1: "Retrieval",
-    section2P1Mid: "(Finden der Daten) und",
+    section2P1Mid: "(die richtigen Daten finden) und",
     section2P1Bold2: "Generation",
-    section2P1End: "(Synthese der Antwort).",
-    section2P2: "Ragas gibt Ihnen nicht nur eine \"Bestanden/Durchgefallen\"-Note. Es zerlegt das Problem in das sogenannte",
+    section2P1End: "(eine akkurate Antwort synthetisieren).",
+    section2P2: "Ragas geht über binäre Bestanden/Durchgefallen-Bewertungen hinaus. Es zerlegt die Evaluation in das, was die Autoren das",
     section2P2Bold: "RAG-Triad",
-    section2P2End: ". Lassen Sie uns diese Metriken destillieren, damit Sie die Mechanik verstehen.",
+    section2P2End: " nennen—drei Metriken, die genau lokalisieren, wo eine Pipeline bricht.",
 
     // Faithfulness Callout
     faithfulnessTitle: "1. Faithfulness (Der \"Hallucinations\"-Check)",
@@ -249,7 +268,7 @@ const content = {
     // References
     referencesTitle: "Quellen & Referenzen",
     ref1Title: "RAGAS: Automated Evaluation of Retrieval Augmented Generation",
-    ref1Author: "arXiv (2023)",
+    ref1Author: "Es, James, Espinosa-Anke & Schockaert (arXiv, 2023)",
     ref2Title: "Ragas Documentation",
     ref2Author: "docs.ragas.io",
   },
@@ -366,13 +385,13 @@ function RagasContent() {
             </p>
 
             <p className="mb-6 leading-relaxed text-zinc-300">
-              {t.section2P2} <strong className="text-cyan-300">{t.section2P2Bold}</strong>{t.section2P2End}
+              {t.section2P2} <strong className="text-cyan-300">{t.section2P2Bold}</strong>{t.section2P2End}<CitationLink num="1" />
             </p>
 
             {/* Faithfulness Callout */}
             <Callout variant="info">
               <h3 className="mb-3 font-mono text-lg font-semibold text-cyan-400">
-                {t.faithfulnessTitle}
+                {t.faithfulnessTitle}<CitationLink num="1" />
               </h3>
               <p className="mb-3 text-zinc-300">
                 <em className="text-zinc-400">{t.faithfulnessQuestion}</em> {t.faithfulnessQuestionText}
@@ -396,7 +415,7 @@ function RagasContent() {
             {/* Answer Relevance Callout */}
             <Callout variant="info">
               <h3 className="mb-3 font-mono text-lg font-semibold text-cyan-400">
-                {t.relevanceTitle}
+                {t.relevanceTitle}<CitationLink num="1" />
               </h3>
               <p className="mb-3 text-zinc-300">
                 <em className="text-zinc-400">{t.relevanceQuestion}</em> {t.relevanceQuestionText}
@@ -417,7 +436,7 @@ function RagasContent() {
             {/* Context Precision Callout */}
             <Callout variant="info">
               <h3 className="mb-3 font-mono text-lg font-semibold text-cyan-400">
-                {t.precisionTitle}
+                {t.precisionTitle}<CitationLink num="1" />
               </h3>
               <p className="mb-3 text-zinc-300">
                 <em className="text-zinc-400">{t.precisionQuestion}</em> {t.precisionQuestionText}
@@ -444,7 +463,7 @@ function RagasContent() {
             </p>
 
             <p className="mb-4 leading-relaxed text-zinc-300">
-              {t.section3P3}
+              {t.section3P3}<CitationLink num="2" />
             </p>
 
             <ul className="mb-6 space-y-3 text-zinc-300">
@@ -509,7 +528,7 @@ function RagasContent() {
               </li>
               <li>
                 <a
-                  href="https://docs.ragas.io/"
+                  href="https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block rounded-lg border border-zinc-800 bg-zinc-900/30 p-4 transition-all hover:border-cyan-500/30 hover:bg-zinc-900/50"

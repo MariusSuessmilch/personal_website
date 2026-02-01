@@ -14,6 +14,26 @@ function InlineCode({ children }: { children: React.ReactNode }) {
   )
 }
 
+const sourceUrls: Record<string, string> = {
+  "1": "https://dl.acm.org/doi/10.1145/3687301",
+  "2": "https://www.oracle.com/a/ocom/docs/datamesh-ebook.pdf",
+  "3": "https://www.oreilly.com/library/view/data-mesh/9781492092384/",
+}
+
+function CitationLink({ num }: { num: string }) {
+  return (
+    <a
+      href={sourceUrls[num]}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="ml-0.5 inline-flex h-4 w-4 items-center justify-center rounded bg-fuchsia-500/20 font-mono text-[10px] text-fuchsia-400 transition-colors hover:bg-fuchsia-500/40 hover:text-fuchsia-300 align-super"
+      title={`Source ${num}`}
+    >
+      {num}
+    </a>
+  )
+}
+
 function ArticleLanguageToggle() {
   const { language, setLanguage } = useLanguage()
 
@@ -49,83 +69,83 @@ const content = {
     backToArticles: "Back to all articles",
     title: "Data Mesh:",
     titleGradient: "The Hidden Engine of Autonomous AI",
-    subtitle: "Why your AI Agents are failing: They are trying to drink from a swamp.",
+    subtitle: "Most enterprise AI initiatives fail not because of model limitations, but because their data foundations cannot support autonomous operation.",
     date: "Jan 10, 2026",
     readTime: "15 min read",
     tag: "Data Architecture",
 
     // Section: Data Swamp Reality
-    section1Title: "The \"Data Swamp\" Reality",
-    section1P1: "Let's be honest about the state of enterprise data. For the last decade, the standard advice was simple:",
+    section1Title: "From Data Lake to Data Swamp",
+    section1P1: "For the last decade, enterprise data strategy followed a single mandate:",
     section1P1Bold: "Centralize Everything",
-    section1P1End: ". Extract data from Sales, Marketing, and Logistics, and load it into one giant data lake.",
-    section1P2: "The intuition here was that if we put all the data in one place, magic would happen.",
-    section1P3: "Instead, we built a",
-    section1P3Bold: "Data Swamp",
+    section1P1End: ". Extract data from Sales, Marketing, and Logistics. Load it into one giant data lake. Analysis and insights would follow.",
+    section1P2: "In practice, this approach produced something different: a Data Swamp.",
+    section1P3: "According to research from Goedegebuure et al., centralized data architectures tend to fail in three predictable ways:",
+    section1P3Bold: "",
     contextLoss: "Context Loss:",
-    contextLossDesc: "The central data team has no idea what \"Churn Rate\" actually means to the Sales team.",
+    contextLossDesc: "Central data teams lack the domain expertise to interpret business metrics correctly. What \"Churn Rate\" means to Sales differs from what it means to Marketing.",
     bottlenecks: "Bottlenecks:",
-    bottlenecksDesc: "Every AI initiative stalls because you're waiting for a ticket to be resolved by an overworked data engineer.",
+    bottlenecksDesc: "AI initiatives stall waiting for overworked data engineers to resolve tickets. The central team becomes a constraint on innovation.",
     fragility: "Fragility:",
-    fragilityDesc: "If the Sales team changes a column name in Salesforce, your entire AI pipeline crashes three days later.",
-    section1Conclusion: "If you are trying to build autonomous AI agents on top of this mess, you are setting them up to fail. An agent needs clear, reliable boundaries to function. It needs a",
+    fragilityDesc: "When the Sales team changes a column name in Salesforce, downstream AI pipelines break days later—often without anyone noticing until production fails.",
+    section1Conclusion: "Autonomous AI agents require clear, reliable data boundaries to function. Building agents on top of a data swamp produces unreliable results. The solution is a",
     section1ConclusionBold: "Data Mesh",
 
     // Section: What is Data Mesh
     section2Title: "Under the Hood: What is a Data Mesh?",
-    section2P1: "Don't be fooled by the buzzwords. At its core, Data Mesh is not a technology; it is a",
-    section2P1Bold: "socio-technical shift",
-    section2P1End: ". It flips the script from \"Centralized Ownership\" to",
+    section2P1: "Data Mesh is not a technology—it is a",
+    section2P1Bold: "socio-technical paradigm shift",
+    section2P1End: ". It moves from \"Centralized Ownership\" to",
     section2P1End2: "\"Domain-Oriented Decentralization.\"",
-    section2P2: "Based on a systematic review of over 100 industrial implementations, here are the four pillars that actually matter:",
+    section2P2: "Originally defined by Zhamak Dehghani and validated across 100+ industrial implementations, Data Mesh rests on four foundational principles:",
 
     // Principles
     principle1Title: "1. Domain Ownership (The \"Who\")",
-    principle1Desc: "Stop moving data to a central team. The people who create the data should own it. The Sales team knows their data best; they should be the ones cleaning and serving it.",
+    principle1Desc: "Data ownership stays with the teams who create it. The Sales team understands their data better than a central platform team ever could. They clean it, document it, and serve it.",
     principle2Title: "2. Data as a Product (The \"What\")",
-    principle2Intro: "This is the game-changer for AI. Data isn't a byproduct anymore; it is a",
+    principle2Intro: "This principle transforms how AI systems interact with enterprise data. Data is no longer a byproduct—it becomes a",
     principle2IntroBold: "Product",
-    principle2Desc: "Just like an API, a Data Product must have:",
+    principle2Desc: "Like an API, a Data Product requires:",
     principle2Point1: "Discoverability:",
-    principle2Point1Desc: "Your AI agent should be able to find it without asking a human.",
+    principle2Point1Desc: "AI agents can locate relevant data without human intervention.",
     principle2Point2: "Addressability:",
-    principle2Point2Desc: "A stable endpoint (SQL, REST, S3) that doesn't change randomly.",
+    principle2Point2Desc: "Stable endpoints (SQL, REST, S3) with consistent interfaces.",
     principle2Point3: "Trustworthiness:",
-    principle2Point3Desc: "An SLA that guarantees quality.",
+    principle2Point3Desc: "Service-level agreements that guarantee data quality and freshness.",
     principle3Title: "3. Self-Serve Data Platform (The \"How\")",
-    principle3Desc: "You can't expect a Marketing analyst to build a Kubernetes cluster. The central IT team shifts from \"doing the work\" to \"building the platform.\" They provide the tooling (storage, compute, templates) so domains can build products easily.",
+    principle3Desc: "Domain teams need infrastructure support without infrastructure expertise. The central IT team shifts from \"doing the work\" to \"building the platform\"—providing storage, compute, and templates that enable domains to publish data products independently.",
     principle4Title: "4. Federated Governance (The \"Rules\")",
-    principle4Desc: "Decentralization doesn't mean anarchy. You still need global standards (security, PII) enforced automatically. Think of it like a city: local shops (domains) operate independently, but everyone follows the same building codes and traffic laws.",
+    principle4Desc: "Decentralization requires coordination. Global standards for security, PII handling, and interoperability get enforced automatically through the platform. Each domain operates independently while following shared protocols—similar to how city zoning allows diverse businesses while maintaining building codes.",
 
     // Section: Why AI Agents Need Mesh
     section3Title: "Why AI Agents",
-    section3TitleEm: "Need",
+    section3TitleEm: "Require",
     section3TitleEnd: "a Mesh",
-    section3P1: "This is the critical link most leaders miss.",
+    section3P1: "The connection between data architecture and AI reliability is often underestimated.",
     section3P2: "An AI Agent (like a",
-    section3P2End: ") is essentially a reasoning engine looking for tools.",
-    inMonolith: "In a Monolith:",
-    inMonolithDesc: "The Agent has to guess which of the 5,000 tables in the warehouse contains the \"real\" inventory count.",
-    inMonolithBold: "It will hallucinate.",
-    inMesh: "In a Mesh:",
-    inMeshDesc: "The Agent calls the",
-    inMeshDescEnd: ". It gets a clean, governed answer:",
-    keyInsight: "The Mesh provides the semantic layer that prevents Agents from going rogue.",
+    section3P2End: ") functions as a reasoning engine that discovers and uses tools.",
+    inMonolith: "In a Monolithic Architecture:",
+    inMonolithDesc: "The agent must determine which of 5,000 warehouse tables contains the authoritative inventory count. Without clear boundaries, it guesses.",
+    inMonolithBold: "Hallucination becomes inevitable.",
+    inMesh: "In a Mesh Architecture:",
+    inMeshDesc: "The agent calls the",
+    inMeshDescEnd: " and receives a governed, authoritative response:",
+    keyInsight: "The Mesh provides the semantic layer that constrains agent behavior to reliable data sources.",
 
     // Conclusion
     conclusionTitle: "The Path Forward",
-    conclusionP1: "You cannot buy a \"Data Mesh\" off the shelf. You cannot just install",
-    conclusionP1End: "and call it a day.",
-    conclusionP2: "It requires a cultural shift: treating data with the same engineering rigor as application code.",
-    conclusionP3: "If you want to build Agents that actually work,",
-    conclusionP3Bold: "stop polishing the prompt and start fixing the pipes",
+    conclusionP1: "Data Mesh cannot be purchased as a product. Installing",
+    conclusionP1End: "alone does not create one.",
+    conclusionP2: "Building a mesh requires treating data with the same engineering discipline applied to application code: versioning, testing, documentation, and ownership.",
+    conclusionP3: "For organizations building autonomous AI systems,",
+    conclusionP3Bold: "the data architecture often matters more than the prompt engineering",
 
     // References
     referencesTitle: "Research & Sources",
     ref1Title: "Data Mesh: A Systematic Gray Literature Review",
-    ref1Author: "Goedegebuure et al. (ACM, 2024)",
-    ref2Title: "Data Mesh ebook",
-    ref2Author: "Oracle (2021)",
+    ref1Author: "Goedegebuure et al. (ACM Computing Surveys, 2025)",
+    ref2Title: "Enterprise Data Mesh",
+    ref2Author: "Oracle",
     ref3Title: "Data Mesh: Delivering Data-Driven Value at Scale",
     ref3Author: "Zhamak Dehghani (O'Reilly, 2022)",
   },
@@ -134,83 +154,83 @@ const content = {
     backToArticles: "Zurück zu allen Artikeln",
     title: "Data Mesh:",
     titleGradient: "Der unsichtbare Motor für autonome KI",
-    subtitle: "Warum Ihre KI-Agenten scheitern: Sie versuchen, aus einem Sumpf zu trinken.",
+    subtitle: "Die meisten KI-Initiativen in Unternehmen scheitern nicht an Modell-Limitierungen, sondern daran, dass ihre Datenfundamente keinen autonomen Betrieb unterstützen können.",
     date: "10. Jan 2026",
     readTime: "15 Min. Lesezeit",
     tag: "Datenarchitektur",
 
     // Section: Data Swamp Reality
-    section1Title: "Die Realität des \"Data Swamp\"",
-    section1P1: "Seien wir ehrlich, was den Zustand von Unternehmensdaten angeht. Im letzten Jahrzehnt war der Rat simpel:",
+    section1Title: "Vom Data Lake zum Data Swamp",
+    section1P1: "Im letzten Jahrzehnt folgte die Datenstrategie in Unternehmen einem einzigen Mandat:",
     section1P1Bold: "Alles zentralisieren",
-    section1P1End: ". Daten aus Vertrieb, Marketing und Logistik extrahieren und in einen riesigen Data Lake kippen.",
-    section1P2: "Die Intuition dabei war: Wenn wir alle Daten an einem Ort haben, passiert Magie.",
-    section1P3: "Stattdessen haben wir einen",
-    section1P3Bold: "Data Swamp (Datensumpf)",
+    section1P1End: ". Daten aus Vertrieb, Marketing und Logistik extrahieren. In einen riesigen Data Lake laden. Analysen und Erkenntnisse würden folgen.",
+    section1P2: "In der Praxis produzierte dieser Ansatz etwas anderes: einen Data Swamp (Datensumpf).",
+    section1P3: "Laut Forschungen von Goedegebuure et al. scheitern zentralisierte Datenarchitekturen tendenziell auf drei vorhersehbare Arten:",
+    section1P3Bold: "",
     contextLoss: "Kontextverlust:",
-    contextLossDesc: "Das zentrale Datenteam hat keine Ahnung, was \"Churn Rate\" für das Vertriebsteam wirklich bedeutet.",
-    bottlenecks: "Flaschenhälse:",
-    bottlenecksDesc: "Jede KI-Initiative stockt, weil Sie darauf warten, dass ein überlasteter Data Engineer ein Ticket bearbeitet.",
+    contextLossDesc: "Zentralen Datenteams fehlt die Domänenexpertise, um Geschäftsmetriken korrekt zu interpretieren. Was \"Churn Rate\" für den Vertrieb bedeutet, unterscheidet sich von dem, was es für Marketing bedeutet.",
+    bottlenecks: "Engpässe:",
+    bottlenecksDesc: "KI-Initiativen stagnieren, während sie darauf warten, dass überlastete Data Engineers Tickets bearbeiten. Das zentrale Team wird zum Innovationshemmnis.",
     fragility: "Fragilität:",
-    fragilityDesc: "Wenn das Vertriebsteam einen Spaltennamen in Salesforce ändert, stürzt Ihre gesamte KI-Pipeline drei Tage später ab.",
-    section1Conclusion: "Wenn Sie versuchen, autonome KI-Agenten auf dieses Chaos zu bauen, sind sie zum Scheitern verurteilt. Ein Agent braucht klare, verlässliche Grenzen, um zu funktionieren. Er braucht einen",
+    fragilityDesc: "Wenn das Vertriebsteam einen Spaltennamen in Salesforce ändert, brechen nachgelagerte KI-Pipelines Tage später—oft ohne dass es jemand bemerkt, bis die Produktion ausfällt.",
+    section1Conclusion: "Autonome KI-Agenten benötigen klare, verlässliche Datengrenzen, um zu funktionieren. Agenten auf einem Datensumpf zu bauen, produziert unzuverlässige Ergebnisse. Die Lösung ist ein",
     section1ConclusionBold: "Data Mesh",
 
     // Section: What is Data Mesh
     section2Title: "Ein Blick unter die Haube: Was ist ein Data Mesh?",
-    section2P1: "Lassen Sie sich nicht von Buzzwords täuschen. Im Kern ist Data Mesh keine Technologie, sondern ein",
-    section2P1Bold: "sozio-technischer Wandel",
-    section2P1End: ". Er dreht das Skript von \"Zentraler Eigentümerschaft\" zu",
+    section2P1: "Data Mesh ist keine Technologie—es ist ein",
+    section2P1Bold: "sozio-technischer Paradigmenwechsel",
+    section2P1End: ". Er bewegt sich von \"Zentraler Eigentümerschaft\" zu",
     section2P1End2: "\"Domänen-orientierter Dezentralisierung.\"",
-    section2P2: "Basierend auf einer systematischen Analyse von über 100 industriellen Implementierungen sind hier die vier Säulen, auf die es wirklich ankommt:",
+    section2P2: "Ursprünglich von Zhamak Dehghani definiert und in über 100 industriellen Implementierungen validiert, basiert Data Mesh auf vier grundlegenden Prinzipien:",
 
     // Principles
     principle1Title: "1. Domänen-Eigentümerschaft (Das \"Wer\")",
-    principle1Desc: "Hören Sie auf, Daten zu einem zentralen Team zu schieben. Die Menschen, die die Daten erzeugen, sollten sie auch besitzen. Das Vertriebsteam kennt seine Daten am besten; sie sollten diejenigen sein, die sie bereinigen und bereitstellen.",
+    principle1Desc: "Die Datenhoheit bleibt bei den Teams, die die Daten erzeugen. Das Vertriebsteam versteht seine Daten besser als jedes zentrale Plattformteam. Sie bereinigen, dokumentieren und stellen sie bereit.",
     principle2Title: "2. Daten als Produkt (Das \"Was\")",
-    principle2Intro: "Das ist der Game-Changer für KI. Daten sind kein Abfallprodukt mehr; sie sind ein",
+    principle2Intro: "Dieses Prinzip transformiert, wie KI-Systeme mit Unternehmensdaten interagieren. Daten sind kein Nebenprodukt mehr—sie werden zum",
     principle2IntroBold: "Produkt",
-    principle2Desc: "Genau wie eine API muss ein Datenprodukt Folgendes bieten:",
+    principle2Desc: "Wie eine API erfordert ein Datenprodukt:",
     principle2Point1: "Auffindbarkeit:",
-    principle2Point1Desc: "Ihr KI-Agent sollte es finden können, ohne einen Menschen zu fragen.",
+    principle2Point1Desc: "KI-Agenten können relevante Daten ohne menschliches Eingreifen lokalisieren.",
     principle2Point2: "Adressierbarkeit:",
-    principle2Point2Desc: "Ein stabiler Endpunkt (SQL, REST, S3), der sich nicht willkürlich ändert.",
+    principle2Point2Desc: "Stabile Endpunkte (SQL, REST, S3) mit konsistenten Schnittstellen.",
     principle2Point3: "Vertrauenswürdigkeit:",
-    principle2Point3Desc: "Ein SLA, das Qualität garantiert.",
+    principle2Point3Desc: "Service-Level-Agreements, die Datenqualität und Aktualität garantieren.",
     principle3Title: "3. Self-Serve Datenplattform (Das \"Wie\")",
-    principle3Desc: "Sie können nicht erwarten, dass ein Marketing-Analyst ein Kubernetes-Cluster baut. Das zentrale IT-Team wechselt von \"die Arbeit machen\" zu \"die Plattform bauen\". Sie stellen die Werkzeuge (Speicher, Rechenleistung, Vorlagen) bereit, damit Domänen einfach Produkte bauen können.",
+    principle3Desc: "Domänenteams brauchen Infrastruktur-Unterstützung ohne Infrastruktur-Expertise. Das zentrale IT-Team wechselt von \"die Arbeit machen\" zu \"die Plattform bauen\"—Bereitstellung von Speicher, Rechenleistung und Vorlagen, die es Domänen ermöglichen, Datenprodukte eigenständig zu veröffentlichen.",
     principle4Title: "4. Föderierte Governance (Die \"Regeln\")",
-    principle4Desc: "Dezentralisierung bedeutet nicht Anarchie. Sie brauchen immer noch globale Standards (Sicherheit, Datenschutz), die automatisch durchgesetzt werden. Stellen Sie es sich wie eine Stadt vor: Lokale Geschäfte (Domänen) agieren unabhängig, aber alle halten sich an die gleichen Bauvorschriften und Verkehrsregeln.",
+    principle4Desc: "Dezentralisierung erfordert Koordination. Globale Standards für Sicherheit, Datenschutz und Interoperabilität werden automatisch durch die Plattform durchgesetzt. Jede Domäne operiert unabhängig und folgt dabei gemeinsamen Protokollen—ähnlich wie Stadtplanung vielfältige Geschäfte ermöglicht und gleichzeitig Bauvorschriften aufrechterhält.",
 
     // Section: Why AI Agents Need Mesh
     section3Title: "Warum KI-Agenten einen Mesh",
-    section3TitleEm: "brauchen",
+    section3TitleEm: "benötigen",
     section3TitleEnd: "",
-    section3P1: "Dies ist der kritische Link, den die meisten Führungskräfte übersehen.",
+    section3P1: "Die Verbindung zwischen Datenarchitektur und KI-Zuverlässigkeit wird oft unterschätzt.",
     section3P2: "Ein KI-Agent (wie ein",
-    section3P2End: ") ist im Grunde eine Denkmaschine auf der Suche nach Werkzeugen.",
-    inMonolith: "Im Monolithen:",
-    inMonolithDesc: "Der Agent muss raten, welche der 5.000 Tabellen im Warehouse den \"echten\" Lagerbestand enthält.",
-    inMonolithBold: "Er wird halluzinieren.",
-    inMesh: "Im Mesh:",
+    section3P2End: ") funktioniert als Reasoning-Engine, die Werkzeuge entdeckt und nutzt.",
+    inMonolith: "In einer monolithischen Architektur:",
+    inMonolithDesc: "Der Agent muss ermitteln, welche der 5.000 Warehouse-Tabellen den autoritativen Lagerbestand enthält. Ohne klare Grenzen rät er.",
+    inMonolithBold: "Halluzination wird unvermeidlich.",
+    inMesh: "In einer Mesh-Architektur:",
     inMeshDesc: "Der Agent ruft die",
-    inMeshDescEnd: " auf. Er erhält eine saubere, geprüfte Antwort:",
-    keyInsight: "Der Mesh bietet die semantische Ebene, die verhindert, dass Agenten außer Kontrolle geraten.",
+    inMeshDescEnd: " auf und erhält eine geprüfte, autoritative Antwort:",
+    keyInsight: "Der Mesh bietet die semantische Schicht, die das Agentenverhalten auf zuverlässige Datenquellen beschränkt.",
 
     // Conclusion
     conclusionTitle: "Der Weg nach vorne",
-    conclusionP1: "Sie können einen \"Data Mesh\" nicht von der Stange kaufen. Sie können nicht einfach",
-    conclusionP1End: "installieren und Feierabend machen.",
-    conclusionP2: "Es erfordert einen kulturellen Wandel: Daten mit der gleichen technischen Strenge zu behandeln wie Anwendungscode.",
-    conclusionP3: "Wenn Sie Agenten bauen wollen, die tatsächlich funktionieren,",
-    conclusionP3Bold: "hören Sie auf, den Prompt zu polieren, und fangen Sie an, die Leitungen zu reparieren",
+    conclusionP1: "Ein Data Mesh kann nicht als Produkt gekauft werden. Die Installation von",
+    conclusionP1End: "allein schafft keinen.",
+    conclusionP2: "Der Aufbau eines Mesh erfordert, Daten mit der gleichen technischen Disziplin zu behandeln, die auf Anwendungscode angewendet wird: Versionierung, Testing, Dokumentation und Ownership.",
+    conclusionP3: "Für Organisationen, die autonome KI-Systeme aufbauen,",
+    conclusionP3Bold: "ist die Datenarchitektur oft wichtiger als das Prompt Engineering",
 
     // References
     referencesTitle: "Quellen & Referenzen",
     ref1Title: "Data Mesh: A Systematic Gray Literature Review",
-    ref1Author: "Goedegebuure et al. (ACM, 2024)",
-    ref2Title: "Data Mesh ebook",
-    ref2Author: "Oracle (2021)",
+    ref1Author: "Goedegebuure et al. (ACM Computing Surveys, 2025)",
+    ref2Title: "Enterprise Data Mesh",
+    ref2Author: "Oracle",
     ref3Title: "Data Mesh: Delivering Data-Driven Value at Scale",
     ref3Author: "Zhamak Dehghani (O'Reilly, 2022)",
   },
@@ -308,7 +328,7 @@ function DataMeshContent() {
             </p>
 
             <p className="mb-4 leading-relaxed text-zinc-300">
-              {t.section1P3} <strong className="text-zinc-50">{t.section1P3Bold}</strong>.
+              {t.section1P3}<CitationLink num="1" />
             </p>
 
             <div className="mb-6 rounded-lg border border-red-500/30 bg-red-500/5 p-4">
@@ -344,7 +364,7 @@ function DataMeshContent() {
             </p>
 
             <p className="mb-6 leading-relaxed text-zinc-300">
-              {t.section2P2}
+              {t.section2P2}<CitationLink num="3" /><CitationLink num="1" />
             </p>
 
             {/* Principle 1 */}
@@ -353,7 +373,7 @@ function DataMeshContent() {
                 {t.principle1Title}
               </h3>
               <p className="text-zinc-300">
-                {t.principle1Desc}
+                {t.principle1Desc}<CitationLink num="3" />
               </p>
             </div>
 
@@ -365,7 +385,7 @@ function DataMeshContent() {
               <p className="mb-3 text-zinc-300">
                 {t.principle2Intro} <strong className="text-zinc-50">{t.principle2IntroBold}</strong>.
               </p>
-              <p className="mb-2 text-zinc-300">{t.principle2Desc}</p>
+              <p className="mb-2 text-zinc-300">{t.principle2Desc}<CitationLink num="2" /><CitationLink num="3" /></p>
               <ul className="space-y-2 text-zinc-300">
                 <li className="flex gap-2">
                   <span className="text-fuchsia-400">•</span>
@@ -454,7 +474,7 @@ function DataMeshContent() {
               {t.conclusionP1} <InlineCode>dbt</InlineCode> {t.conclusionP1End}
             </p>
             <p className="mt-4 text-lg leading-relaxed text-zinc-200">
-              {t.conclusionP2}
+              {t.conclusionP2}<CitationLink num="3" />
             </p>
             <p className="mt-4 text-lg leading-relaxed text-zinc-200">
               {t.conclusionP3} <strong className="text-fuchsia-300">{t.conclusionP3Bold}</strong>.
@@ -469,7 +489,7 @@ function DataMeshContent() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="https://dl.acm.org/doi/10.1145/3643678"
+                  href="https://dl.acm.org/doi/10.1145/3687301"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block rounded-lg border border-zinc-800 bg-zinc-900/30 p-4 transition-all hover:border-fuchsia-500/30 hover:bg-zinc-900/50"
@@ -485,7 +505,7 @@ function DataMeshContent() {
               </li>
               <li>
                 <a
-                  href="https://www.oracle.com/a/ocom/docs/data-mesh-ebook.pdf"
+                  href="https://www.oracle.com/a/ocom/docs/datamesh-ebook.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block rounded-lg border border-zinc-800 bg-zinc-900/30 p-4 transition-all hover:border-fuchsia-500/30 hover:bg-zinc-900/50"
